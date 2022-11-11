@@ -1,15 +1,8 @@
-/*Places
-*
-*Component Functions to fetch and parse json data, example showing and writing filtering of categories
-*Importing and Calling each place in a list of places to be rendered
-*
-*Author Jeffrey Serio
-*/
-
 import React, {useEffect, useState} from 'react'
 import PlaceItem from "../components/PlaceItem.js";
 import getData from "../utils/getData";
 import {CircularProgress} from "@mui/material";
+import logo from "../img/logo.png"
 
 export default function PlacesPage() {
     const [places, setPlaces] = useState([])
@@ -22,12 +15,19 @@ export default function PlacesPage() {
     }, []);
 
     return (
-        <>
-            <h2>Places To Eat</h2>
+        <main>
+            <section>
+                <img className="logo" src={logo} alt="Visit Denmark"></img>
+            </section>
+            <div className='events-top'>
+                <h2 className='title-pages'>Places To Eat</h2>
+            </div>
+            <section className='container-page-events'>
             {
                 loading ? <CircularProgress/> :
                     places.map(place => (<PlaceItem place={place} key={place.id}/>))
             }
-        </>
+            </section>
+        </main>
     )
 }

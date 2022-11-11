@@ -31,7 +31,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
 }
-a {
+a a:hover a:visited a:active{
 	text-decoration: none;
 }
 ol, ul {
@@ -50,15 +50,230 @@ table {
 	border-spacing: 0;
 }
 
-/* DISPLAY LIST */
+/* CSS Variables - colours */
 
-.container-place{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+:root {
+	--white: #ffffff;
+	--pink: #FAC5CC;
+	--lightgreen: #A3EABF;
+	--yellow: #FFE882;
+	--lighblue: #C3EBFF;
+	--red: #E70013;
+	--navyblue: #022B52;
 }
 
-.container-activities{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+/* LOGO DISPLAY */
+
+.logo{
+	display: flex;
+	width: 100%;
 }
 
+/* STYLING HOME PAGE */
+
+.container-cards-home{
+	display: grid;
+	grid-auto-columns: 1fr;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr; 
+  	gap: 10px 0px;
+	grid-template-areas: 
+	"firstcard secondcard"
+	"thirdcard fourthcard";
+}
+
+.firstcard {
+	grid-area: firstcard;
+}
+
+.secondcard {
+	grid-area: secondcard;
+}
+
+.thirdcard {
+	grid-area: thirdcard;
+}
+
+.fourthcard {
+	grid-area: fourthcard;
+}
+
+.commoncard {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.pictures-cards-home{
+	width: 80%;
+	height: 100%;
+	position: relative;
+}
+
+.card-title {
+	display: flex;
+	justify-content: center;
+	font-family: montserrat, sans-serif;
+	position: absolute;
+	font-weight: 500;
+	color: var(--white);
+	font-size: 1.2rem;
+	text-shadow: 2px 1px black;
+	z-index: 9999;
+}
+
+.card-frame {
+	width: 30%;
+	height: 23%;
+	display: flex;
+	position: absolute;
+	z-index: 999;
+}
+
+.frame1 {
+	border: 5px solid var(--pink);
+}
+
+.frame2 {
+	border: 5px solid var(--lightgreen);
+}
+
+.frame3 {
+	border: 5px solid var(--yellow);
+}
+
+.frame4 {
+	border: 5px solid var(--lighblue);
+}
+
+.trips-title{
+	font-family: montserrat, sans-serif;
+	font-size: 2rem;
+	margin: 2rem 0 1rem 1rem;
+}
+
+.container-trips-1{
+	margin: auto;
+	display: flex;
+	text-align: left;
+	width: 80%;
+	background-color: var(--navyblue);
+	color: var(--white);
+	padding: 20px 20px;
+	font-family: montserrat, sans-serif;
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+.container-trips-2{
+	margin: auto;
+	margin-top: 1rem;
+	display: flex;
+	text-align: left;
+	justify-content: space-between;
+	width: 80%;
+	background-color: var(--red);
+	color: var(--white);
+	padding: 20px 20px;
+	font-family: montserrat, sans-serif;
+	font-size: 1.5rem;
+	text-decoration: none;
+}
+
+/* STYLING EVENTS PAGE */
+
+.title-pages{
+	display: flex;
+	justify-content: center;
+	font-family: montserrat, sans-serif;
+	font-size: 2.5rem;
+}
+
+.container-page-events{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.categoryitem-img {
+	width: 90%;
+	height: 300px;
+	object-fit: cover;
+}
+
+.categoryitem-name{
+	display: flex;
+	position: absolute;
+	bottom: 0;
+	z-index: 999;
+	font-family: montserrat, sans-serif;
+	font-size: 1.2rem;
+	color: var(--white);
+	width: 90%;
+}
+
+.container-cards-categories {
+	display: flex;
+	justify-content: center;
+	margin-top: 1em;
+	position: relative;
+}
+
+.shadow{
+	display: flex;
+	position: absolute;
+	background-color: rgb(25.5, 25.5, 25.5, 0.2);
+	z-index: 998;
+	width: 90%;
+	height: 100%;
+}
+
+/* STYLING DESCRIPTION PAGE */
+
+.container-description{
+	position: relative;
+	height: 300px;
+}
+
+.img-description{
+	width: 100%;
+	height: inherit;
+	object-fit: cover;
+	position: absolute;
+}
+
+.title-description{
+	font-family: montserrat, sans-serif;
+	position: absolute;
+	font-size: 2.2rem;
+	color: var(--white);
+	bottom: 10%;
+	margin: 0 0 2rem 1rem;
+	z-index: 999;
+}
+
+.address-description{
+	position: absolute;
+	color: var(--white);
+	font-family: montserrat, sans-serif;
+	font-size: 1.2rem;
+	bottom: 2%;
+	margin: 0 0 1rem 1rem;
+	z-index: 999;
+}
+
+.text-desc-container {
+	width: 100%;
+}
+
+.text-description { 
+	color: #707070;
+	font-family: montserrat, sans-serif;
+	margin: 1rem; 
+	line-height: 1.5rem;
+}
+
+#shadow-description{
+	width: 100%;
+	z-index: 998;
+}

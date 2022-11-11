@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import ActivitiesItem from "../components/ActivitiesItem";
 import getData from "../utils/getData";
 import {CircularProgress} from "@mui/material";
+import logo from "../img/logo.png"
 
 export default function Activities() {
     const [activities, setActivities] = useState([]);
@@ -14,12 +15,19 @@ export default function Activities() {
     }, []);
 
     return (
-        <>
-            <h2>Places To Visit</h2>
+        <main>
+            <section>
+                <img className="logo" src={logo} alt="Visit Denmark"></img>
+            </section>
+            <div className='events-top'>
+                <h2 className='title-pages'>ACTIVITIES</h2>
+            </div>
+            <section className='container-page-events'>
             {
                 loading ? <CircularProgress/> :
                     activities.map(activity => (<ActivitiesItem activity={activity} key={activity.id}/>))
             }
-        </>
+            </section>
+        </main>
     )
 }

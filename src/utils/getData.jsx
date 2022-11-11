@@ -6,7 +6,7 @@ const getData = async ({url, setData, setLoading}) => {
         setData(data)
         setLoading(false)
     } catch (error) {
-        console.log(error + '\nOh come on! These should be easy peeps! What')
+        console.log(error + 'Oh come on! These should be easy peeps! What')
         setLoading(false)
     }
 }
