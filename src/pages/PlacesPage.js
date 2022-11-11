@@ -6,42 +6,28 @@
 *Author Jeffrey Serio
 */
 
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import PlaceItem from "../components/PlaceItem.js";
+import getData from "../utils/getData";
+import {CircularProgress} from "@mui/material";
 
-export default function PlacesPage()
-{
-    const[places, setPlaces] = useState([]);
+export default function PlacesPage() {
+    const [places, setPlaces] = useState([])
+    const [loading, setLoading] = useState(true);
+
+    const url = "https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/categories/placesToEat.json";
 
     useEffect(() => {
-
-        async function getPlaces()
-        {
-            const url = "https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/categories/placesToEat.json";
-            const response = await fetch(url);
-            const data = await response.json();
-            const filteredrest = [];
-          
-           try{
-                for (var i = 0; i < data.length; i++) {
-                var place = data[i];
-                filteredrest.push(place)
-            }
-           }catch (error) {
-            console.log('Oh come on! These should be easy peeps! What')
-          }
-            setPlaces(filteredrest);
-        }
-        getPlaces();
-
+        getData({url: url, setData: setPlaces, setLoading})
     }, []);
 
-    return(
-    <>
-    <h2>Places To Eat</h2>
-        {
-           places.map(place =>(<PlaceItem place={place} key={place.id} />))
-        }
-    </>
-    )    
+    return (
+        <>
+            <h2>Places To Eat</h2>
+            {
+                loading ? <CircularProgress/> :
+                    places.map(place => (<PlaceItem place={place} key={place.id}/>))
+            }
+        </>
+    )
 }

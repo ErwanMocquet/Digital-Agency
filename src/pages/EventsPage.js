@@ -1,39 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import EventItem from "../components/EventItem.js";
+import getData from "../utils/getData";
+import {CircularProgress} from "@mui/material";
 
-export default function EventsPage()
-{
-    const[events, setEvents] = useState([]);
+export default function EventsPage() {
+    const [events, setEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    const url = "https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/categories/events.json";
 
     useEffect(() => {
-
-        async function getEvents()
-        {
-            const url = "https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/categories/events.json";
-            const response = await fetch(url);
-            const data = await response.json();
-            const filteredrest = [];
-          
-           try{
-                for (var i = 0; i < data.length; i++) {
-                var event = data[i];
-                filteredrest.push(event)
-            }
-           }catch (error) {
-            console.log('Oh come on! These should be easy peeps! What')
-          }
-            setEvents(filteredrest);
-        }
-        getEvents();
-
+        getData({url: url, setData: setEvents, setLoading})
     }, []);
 
-    return(
-    <>
-    <h2>Places To Go</h2>
-        {
-           events.map(event =>(<EventItem event={event} key={event.id} />))
-        }
-    </>
-    )    
+    return (
+        <>
+            <h2>Places To Go</h2>
+            {
+                loading ? <CircularProgress/> :
+                    events.map(event => (<EventItem event={event} key={event.id}/>))
+            }
+        </>
+    )
 }
