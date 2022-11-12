@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import useCheckImage from "../utils/checkUrl";
 
 export default function ActivitiesItem({activity}){
 
@@ -13,7 +14,7 @@ export default function ActivitiesItem({activity}){
         <Link to="/description" state={{datapass}}>
             <div className="container-cards-categories">
                 <div className="categoryitem-name">{activity.Name}</div>
-                <img className="categoryitem-img" src={activity.Files.length > 0 && activity.Files[0].Uri} alt={activity.Name}/>
+                <img className="categoryitem-img" src={useCheckImage(activity.Files.find(img => img.uri !== null).Uri) ? activity.Files.find(img => img.uri !== null).Uri : '../placeholder.jpg'} alt={activity.Name}/>
             </div>
         </Link>
 )}
