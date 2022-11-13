@@ -3,10 +3,14 @@ import AttractionsItem from "../components/AttractionsItem.js";
 import getData from "../utils/getData";
 import {CircularProgress} from "@mui/material";
 import logo from "../img/logo.png"
+import PaginationBox from "../components/Pagination";
+import Filter from "../components/Filter";
 
 export default function AttractionsPage() {
     const [attractions, setAttractions] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [pageNumber, setPageNumber] = useState(1);
+    const pageSize = 10;
 
     const url = "https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/categories/attractions.json";
 
@@ -22,12 +26,26 @@ export default function AttractionsPage() {
             <div className='events-top'>
                 <h2 className='title-pages'>ATTRACTIONS</h2>
             </div>
+            <Filter
+                setPageNumber={setPageNumber}
+                setData={setAttractions}
+                setLoading={setLoading}
+                url={url}
+            />
             <section className='container-page-events'>
-            {
-                loading ? <CircularProgress/> :
-                    attractions.map(attraction => (<AttractionsItem attraction={attraction} key={attraction.id}/>))
-            }
+                {
+                    loading ? <CircularProgress/> :
+                        attractions.slice((pageNumber - 1) * pageSize, (pageNumber * pageSize)).map(attraction => (
+                            <AttractionsItem attraction={attraction} key={attraction.id}/>))
+                }
             </section>
+            <PaginationBox
+                loading={loading}
+                setPageNumber={setPageNumber}
+                length={attractions.length}
+                pageSize={pageSize}
+                pageNumber={pageNumber}
+            />
         </main>
     )
 }

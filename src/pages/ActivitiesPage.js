@@ -1,19 +1,18 @@
 import React, {useEffect, useState} from 'react'
 import ActivitiesItem from "../components/ActivitiesItem";
 import getData from "../utils/getData";
-import {Box, CircularProgress, Pagination} from "@mui/material";
+import {CircularProgress} from "@mui/material";
 import logo from "../img/logo.png"
+import PaginationBox from "../components/Pagination";
+import Filter from "../components/Filter";
 
 export default function Activities() {
+    const url = "https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/categories/activities.json";
+
     const [activities, setActivities] = useState([]);
     const [loading, setLoading] = useState(true);
     const [pageNumber, setPageNumber] = useState(1);
     const pageSize = 10;
-    const handleChange = (event, value) => {
-        setPageNumber(value);
-    };
-
-    const url = "https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/categories/activities.json";
 
     useEffect(() => {
         getData({url: url, setData: setActivities, setLoading})
@@ -27,21 +26,27 @@ export default function Activities() {
             <div className='events-top'>
                 <h2 className='title-pages'>ACTIVITIES</h2>
             </div>
+            <Filter
+                setPageNumber={setPageNumber}
+                setData={setActivities}
+                setLoading={setLoading}
+                url={url}
+            />
             <section className='container-page-events'>
                 {
                     loading ? <CircularProgress/> :
-                        activities.slice(((pageNumber - 1) * pageSize), (pageNumber * pageSize)).map(activity => (
+                        activities.slice((pageNumber - 1) * pageSize, (pageNumber * pageSize)).map(activity => (
                             <ActivitiesItem activity={activity} key={activity.id}/>)
                         )
                 }
             </section>
-            {
-                loading ? <CircularProgress/> :
-                    <Box sx={{width: '100%', display: 'flex', justifyContent: 'center', py: 5}}>
-                        <Pagination count={Math.ceil(activities.length / pageSize)} page={pageNumber}
-                                    onChange={handleChange}/>
-                    </Box>
-            }
+            <PaginationBox
+                loading={loading}
+                setPageNumber={setPageNumber}
+                length={activities.length}
+                pageSize={pageSize}
+                pageNumber={pageNumber}
+            />
         </main>
     )
 }
