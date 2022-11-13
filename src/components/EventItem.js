@@ -15,7 +15,7 @@ export default function EventItem({event}) {
             <div className="container-cards-categories">
                 <article className="categoryitem-name">{event.Name}</article>
                 <img className="categoryitem-img"
-                     src={useCheckImage(event.Files.find(img => img.uri !== null).Uri) ? event.Files.find(img => img.uri !== null).Uri : '../placeholder.jpg'}
+                     src={useCheckImage(event.Files) ? event.Files.find(img => img.uri !== null) ? event.Files.find(img => img.uri !== null).Uri : '../placeholder.jpg' : '../placeholder.jpg'}
                      alt={event.Name}/>
                 <div className="shadow"></div>
             </div>

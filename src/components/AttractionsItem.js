@@ -15,7 +15,7 @@ export default function AttractionsItem({attraction}) {
             <div className="container-cards-categories">
                 <article className="categoryitem-name">{attraction.Name}</article>
                 <img className="categoryitem-img"
-                     src={useCheckImage(attraction.Files.find(img => img.uri !== null).Uri) ? attraction.Files.find(img => img.uri !== null).Uri : '../placeholder.jpg'}
+                     src={useCheckImage(attraction.Files) ? attraction.Files.find(img => img.uri !== null) ? attraction.Files.find(img => img.uri !== null).Uri : '../placeholder.jpg' : '../placeholder.jpg'}
                      alt={attraction.Name}/>
             </div>
         </Link>

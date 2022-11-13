@@ -14,7 +14,10 @@ export default function ActivitiesItem({activity}){
         <Link to="/description" state={{datapass}}>
             <div className="container-cards-categories">
                 <div className="categoryitem-name">{activity.Name}</div>
-                <img className="categoryitem-img" src={useCheckImage(activity.Files.find(img => img.uri !== null).Uri) ? activity.Files.find(img => img.uri !== null).Uri : '../placeholder.jpg'} alt={activity.Name}/>
+                <img className="categoryitem-img"
+                     src={useCheckImage(activity.Files) ? activity.Files.find(img => img.uri !== null) ? activity.Files.find(img => img.uri !== null).Uri : '../placeholder.jpg' : '../placeholder.jpg'}
+                     alt={activity.Name}
+                />
             </div>
         </Link>
 )}
