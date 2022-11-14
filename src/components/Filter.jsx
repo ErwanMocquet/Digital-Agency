@@ -24,11 +24,11 @@ const Filter = ({setPageNumber, url, setData, setLoading}) => {
         <Container maxWidth={'xl'}>
             <Box display={'flex'} alignItems={'center'} gap={2}>
                 <TextField
-                    label="Filter"
+                    label="Search bar"
                     onChange={handleChangeFilter}
                 />
                 <Button onClick={handleSubmit} variant={'outlined'}>Submit</Button>
-                <Button onClick={handleReset}>Reset filter</Button>
+                <Button onClick={handleReset}>Reset search</Button>
             </Box>
         </Container>
     )

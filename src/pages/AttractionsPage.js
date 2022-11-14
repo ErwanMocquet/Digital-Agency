@@ -5,6 +5,7 @@ import {CircularProgress} from "@mui/material";
 import logo from "../img/logo.png"
 import PaginationBox from "../components/Pagination";
 import Filter from "../components/Filter";
+import { BackButton } from '../components/BackButton';
 
 export default function AttractionsPage() {
     const [attractions, setAttractions] = useState([]);
@@ -46,6 +47,7 @@ export default function AttractionsPage() {
                 pageSize={pageSize}
                 pageNumber={pageNumber}
             />
+            <BackButton />
         </main>
     )
 }

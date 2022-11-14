@@ -1,6 +1,5 @@
 import "./index.css"
 import {Route, Navigate, Routes} from "react-router-dom"
-import OnboardingPage from "./pages/OnboardingPage.js"
 import HomePage from "./pages/HomePage.js"
 import ActivitiesPage from "./pages/ActivitiesPage.js"
 import EventsPage from "./pages/EventsPage.js"
@@ -15,8 +14,7 @@ function App() {
   return(
     <main>
       <Routes>
-        <Route path="/" element={<OnboardingPage/>} />
-        <Route path="/home" element={<HomePage/>} />
+        <Route path="/" element={<HomePage/>} />
         <Route path="/activities" element={<ActivitiesPage/>} />
         <Route path="/events" element={<EventsPage/>} />
         <Route path="/places" element={<PlacesPage/>} />

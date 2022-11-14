@@ -5,6 +5,7 @@ import {CircularProgress} from "@mui/material";
 import logo from "../img/logo.png"
 import PaginationBox from "../components/Pagination";
 import Filter from "../components/Filter";
+import { BackButton } from '../components/BackButton';
 
 export default function Activities() {
     const url = "https://raw.githubusercontent.com/manypossibles/designops/master/assets/data/en/categories/activities.json";
@@ -47,6 +48,7 @@ export default function Activities() {
                 pageSize={pageSize}
                 pageNumber={pageNumber}
             />
+            <BackButton />
         </main>
     )
 }

@@ -5,6 +5,7 @@ import {CircularProgress} from "@mui/material";
 import logo from "../img/logo.png"
 import Filter from "../components/Filter";
 import PaginationBox from "../components/Pagination";
+import { BackButton } from '../components/BackButton';
 
 export default function PlacesPage() {
     const [places, setPlaces] = useState([])
@@ -46,6 +47,7 @@ export default function PlacesPage() {
                 pageSize={pageSize}
                 pageNumber={pageNumber}
             />
+            <BackButton />
         </main>
     )
 }
